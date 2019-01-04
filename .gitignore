@@ -1,0 +1,10 @@
+Makefile
+CMakeFiles/
+CMakeCache.txt
+*.cmake
+*.o
+*~
+*.bak
+*.orig
+aweather
+test_aweather
