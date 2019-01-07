@@ -2,12 +2,13 @@
 #define AWEATHER_H_
 
 #include "weather/weather.h"
+#include "terminal/terminal.h"
 
 
 class Aweather {
     Weather *weather_;
 public:
-    Aweather();
+    Aweather(Terminal);
     ~Aweather();
     void update() { weather_->update(); }
 };

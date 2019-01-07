@@ -1,6 +1,7 @@
 #include "snow.h"
 
-Snow::Snow()
+
+Snow::Snow(Terminal term) : Weather(term)
 {
 }
 

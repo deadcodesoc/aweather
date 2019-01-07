@@ -1,9 +1,10 @@
 #include "aweather.h"
 #include "weather/snow.h"
 
-Aweather::Aweather()
+
+Aweather::Aweather(Terminal term)
 {
-    weather_ = new Snow();
+    weather_ = new Snow(term);
 }
 
 Aweather::~Aweather()

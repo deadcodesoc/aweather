@@ -1,14 +1,30 @@
 #ifndef AWEATHER_WEATHER_SNOW_H_
 #define AWEATHER_WEATHER_SNOW_H_
 
+#include <vector>
 #include "weather/weather.h"
+#include "terminal/terminal.h"
 
+
+class SnowFlake {
+    char shape;
+    float column;
+    float row;
+    int falling;
+    float speed;   // falling speed
+    float phase;   // wobble phase
+    float freq;    // wobble frequency
+    float wobble;  // wobble amount
+public:
+    SnowFlake() {}
+};
 
 class Snow : public Weather {
     int intensity;
     int temperature;
+    std::vector<SnowFlake> flakes;
 public:
-    Snow();
+    Snow(Terminal);
     ~Snow();
     void update() override;
 };
