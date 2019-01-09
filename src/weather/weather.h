@@ -5,6 +5,7 @@
 
 
 class Weather {
+protected:
     Terminal term_;
 public:
     Weather(const Terminal term): term_(term) {}

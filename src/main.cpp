@@ -1,4 +1,5 @@
 #include "aweather.h"
+#include <unistd.h>
 #include "terminal/tty.h"
 
 
@@ -10,6 +11,7 @@ int main(int argc, char **argv)
 
     while (true) {
         aw.update();
+        usleep(100000);
     }
 
 }

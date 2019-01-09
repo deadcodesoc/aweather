@@ -15,8 +15,11 @@ class SnowFlake {
     float phase;   // wobble phase
     float freq;    // wobble frequency
     float wobble;  // wobble amount
+
+    friend class Snow;
 public:
     SnowFlake() {}
+    void reset() {}
 };
 
 class Snow : public Weather {
