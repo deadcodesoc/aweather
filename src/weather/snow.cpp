@@ -3,7 +3,7 @@
 #include "frame.h"
 
 
-Snow::Snow(Terminal term) : Weather(term)
+Snow::Snow(Terminal& term) : Weather(term)
 {
 }
 

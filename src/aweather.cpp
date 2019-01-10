@@ -2,7 +2,7 @@
 #include "weather/snow.h"
 
 
-Aweather::Aweather(Terminal term)
+Aweather::Aweather(Terminal& term)
 {
     weather_ = new Snow(term);
 }

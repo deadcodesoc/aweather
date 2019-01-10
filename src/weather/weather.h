@@ -6,9 +6,9 @@
 
 class Weather {
 protected:
-    Terminal term_;
+    Terminal& term_;
 public:
-    Weather(const Terminal term): term_(term) {}
+    Weather(Terminal& term): term_(term) {}
     virtual ~Weather() {}
     virtual void update() = 0;
 };

@@ -8,7 +8,7 @@
 class Aweather {
     Weather *weather_;
 public:
-    Aweather(Terminal);
+    Aweather(Terminal&);
     ~Aweather();
     void update() { weather_->update(); }
 };

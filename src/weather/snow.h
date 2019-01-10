@@ -27,7 +27,7 @@ class Snow : public Weather {
     int temperature;
     std::vector<SnowFlake> flakes;
 public:
-    Snow(Terminal);
+    Snow(Terminal&);
     ~Snow();
     void update() override;
 };

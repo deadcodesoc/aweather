@@ -1,5 +1,6 @@
 #include "tty.h"
 #include <string>
+#include <iostream>
 #include <stdexcept>
 #include <cerrno>
 #include <cstring>
@@ -21,4 +22,14 @@ Tty::Tty()
 
 Tty::~Tty()
 {
+}
+
+void Tty::putchar(const char c)
+{
+    std::cout << c;
+}
+
+void Tty::flush()
+{
+    std::cout << std::flush;
 }
