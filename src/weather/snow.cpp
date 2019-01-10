@@ -20,7 +20,7 @@ inline size_t array_size(T(&arr)[SIZE]) {
 }  // namespace
 
 
-Snow::Snow(Terminal& term) : Weather(term)
+Snow::Snow()
 {
 }
 
@@ -28,17 +28,15 @@ Snow::~Snow()
 {
 }
 
-void Snow::update()
+void Snow::update(Frame &scr)
 {
-    Frame fg(term_.lines(), term_.cols());
-    Frame scr(term_.lines(), term_.cols());
+    Frame fg(scr.rows(), scr.columns());
 
     for (auto s : flakes) {
         s.fall(fg);
     }
 
     scr.copy(fg);
-    scr.draw(term_);
 }
 
 // ------------------------------------------------------------------
@@ -83,5 +81,22 @@ int Snowflake::row()
 
 bool Snowflake::blocked(Frame& fr)
 {
+    const int row = (int)floorf(row_);
+    const int speed = (int)ceilf(speed_);
+
+    // Block if we're at the bottom of the frame
+    if (row >= fr.rows() - 1) {
+        row_ = fr.rows() - 1;
+        return true;
+    }
+
+    for (int i = 1; i <= speed; i++) {
+        // Block if we have an obstacle directly below us
+        if (fr.get(column(), row + i) != Blank) {
+            row_ += i - 1;
+            return true;
+        }
+    }
+
     return false;
 }

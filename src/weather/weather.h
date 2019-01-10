@@ -1,16 +1,14 @@
 #ifndef AWEATHER_WEATHER_WEATHER_H_
 #define AWEATHER_WEATHER_WEATHER_H_
 
-#include "terminal/terminal.h"
+#include "frame.h"
 
 
 class Weather {
-protected:
-    Terminal& term_;
 public:
-    Weather(Terminal& term): term_(term) {}
+    Weather() {}
     virtual ~Weather() {}
-    virtual void update() = 0;
+    virtual void update(Frame&) = 0;
 };
 
 

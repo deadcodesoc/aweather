@@ -3,7 +3,6 @@
 
 #include <vector>
 #include "weather/weather.h"
-#include "terminal/terminal.h"
 #include "frame.h"
 
 
@@ -32,9 +31,9 @@ class Snow : public Weather {
     int temperature;
     std::vector<Snowflake> flakes;
 public:
-    Snow(Terminal&);
+    Snow();
     ~Snow();
-    void update() override;
+    void update(Frame&) override;
     void fall();
     void reset();
 };

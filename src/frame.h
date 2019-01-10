@@ -6,6 +6,8 @@
 #include <terminal/terminal.h>
 
 
+constexpr char Blank = ' ';
+
 class Frame {
     std::vector<char> buffer_;
     int rows_;
@@ -25,6 +27,12 @@ public:
     int size() { return columns_ * rows_; } const
     void put(const int row, const int col, const char c) {
         buffer_[row * columns_ + col] = c;
+    }
+    char get(const int row, const int col) {
+        return buffer_[row * columns_ + col];
+    }
+    void clear() {
+        std::fill(buffer_.begin(), buffer_.end(), ' ');
     }
     void copy(Frame& f) {
         if (rows_ == f.rows() && columns_ == f.columns_) {

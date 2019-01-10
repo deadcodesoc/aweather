@@ -11,6 +11,7 @@ int main(int argc, char **argv)
 
     while (true) {
         aw.update();
+        aw.draw();
         usleep(100000);
     }
 

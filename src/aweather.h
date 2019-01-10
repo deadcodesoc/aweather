@@ -7,10 +7,13 @@
 
 class Aweather {
     Weather *weather_;
+    Terminal& term_;
+    Frame scr_;
 public:
     Aweather(Terminal&);
     ~Aweather();
-    void update() { weather_->update(); }
+    void update() { weather_->update(scr_); }
+    void draw() { scr_.draw(term_); }
 };
 
 #endif  // AWEATHER_H_
