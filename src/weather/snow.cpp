@@ -1,5 +1,6 @@
 #include "snow.h"
 #include <cmath>
+#include <cstdlib>
 #include "frame.h"
 
 
