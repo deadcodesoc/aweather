@@ -7,6 +7,8 @@ Aweather::Aweather(Terminal& term) :
     term_(term),
     scr_(term.lines(), term.cols())
 {
+    scr_.clear();
+    scr_.draw(term_);
     weather_ = new Snow();
 }
 

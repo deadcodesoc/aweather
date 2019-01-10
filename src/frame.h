@@ -16,7 +16,7 @@ public:
     Frame(const int rows, const int columns) :
         rows_(rows),
         columns_(columns),
-        buffer_(size())
+        buffer_(rows * columns)
     {
     }
     ~Frame() {

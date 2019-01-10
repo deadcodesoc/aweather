@@ -17,6 +17,7 @@ public:
     int lines() { return size_.lines; }
     int cols() { return size_.cols; }
     virtual void putchar(const char) = 0;
+    virtual void clear() = 0;
     virtual void flush() = 0;
 };
 

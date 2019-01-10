@@ -9,6 +9,7 @@ public:
     Tty();
     ~Tty();
     void putchar(const char) override;
+    void clear() override {};
     void flush() override;
 };
 
