@@ -4,32 +4,39 @@
 #include <vector>
 #include "weather/weather.h"
 #include "terminal/terminal.h"
+#include "frame.h"
 
 
-class SnowFlake {
-    char shape;
-    float column;
-    float row;
-    int falling;
-    float speed;   // falling speed
-    float phase;   // wobble phase
-    float freq;    // wobble frequency
-    float wobble;  // wobble amount
+class Snowflake {
+    char shape_;
+    float column_;
+    float row_;
+    bool falling_;
+    float speed_;   // falling speed
+    float phase_;   // wobble phase
+    float freq_;    // wobble frequency
+    float wobble_;  // wobble amount
 
-    friend class Snow;
+    bool blocked(Frame&);
 public:
-    SnowFlake() {}
-    void reset() {}
+    Snowflake() {}
+    void fall(Frame&);
+    void reset(Frame&);
+    int row();
+    int column();
+    bool falling() { return falling_; }
 };
 
 class Snow : public Weather {
     int intensity;
     int temperature;
-    std::vector<SnowFlake> flakes;
+    std::vector<Snowflake> flakes;
 public:
     Snow(Terminal&);
     ~Snow();
     void update() override;
+    void fall();
+    void reset();
 };
 
 #endif  // AWEATHER_WEATHER_SNOW_H_
