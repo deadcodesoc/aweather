@@ -21,23 +21,26 @@ inline size_t array_size(T(&arr)[SIZE]) {
 }  // namespace
 
 
-Snow::Snow()
+Snow::Snow(Frame& scr) : Weather(scr)
 {
+    for (auto s : flakes) {
+        s.reset(scr);
+    }
 }
 
 Snow::~Snow()
 {
 }
 
-void Snow::update(Frame &scr)
+void Snow::update()
 {
-    Frame fg(scr.rows(), scr.columns());
+    Frame fg(scr_.rows(), scr_.columns());
 
     for (auto s : flakes) {
         s.fall(fg);
     }
 
-    scr.copy(fg);
+    scr_.copy(fg);
 }
 
 // ------------------------------------------------------------------

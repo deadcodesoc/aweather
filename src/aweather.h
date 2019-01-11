@@ -12,7 +12,7 @@ class Aweather {
 public:
     Aweather(Terminal&);
     ~Aweather();
-    void update() { weather_->update(scr_); }
+    void update() { weather_->update(); }
     void draw() { scr_.draw(term_); }
 };
 

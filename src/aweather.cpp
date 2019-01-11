@@ -9,7 +9,7 @@ Aweather::Aweather(Terminal& term) :
 {
     scr_.clear();
     scr_.draw(term_);
-    weather_ = new Snow();
+    weather_ = new Snow(scr_);
 }
 
 Aweather::~Aweather()

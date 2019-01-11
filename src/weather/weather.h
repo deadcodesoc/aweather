@@ -5,10 +5,12 @@
 
 
 class Weather {
+protected:
+    Frame scr_;
 public:
-    Weather() {}
+    Weather(Frame& scr) : scr_(scr) {}
     virtual ~Weather() {}
-    virtual void update(Frame&) = 0;
+    virtual void update() = 0;
 };
 
 

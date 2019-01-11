@@ -31,9 +31,9 @@ class Snow : public Weather {
     int temperature;
     std::vector<Snowflake> flakes;
 public:
-    Snow();
+    Snow(Frame&);
     ~Snow();
-    void update(Frame&) override;
+    void update() override;
     void fall();
     void reset();
 };
