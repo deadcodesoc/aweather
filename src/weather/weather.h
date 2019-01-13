@@ -6,7 +6,7 @@
 
 class Weather {
 protected:
-    Frame scr_;
+    Frame& scr_;
 public:
     Weather(Frame& scr) : scr_(scr) {}
     virtual ~Weather() {}

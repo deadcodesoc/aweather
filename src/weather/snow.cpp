@@ -21,10 +21,14 @@ inline size_t array_size(T(&arr)[SIZE]) {
 }  // namespace
 
 
-Snow::Snow(Frame& scr) : Weather(scr)
+Snow::Snow(Frame& scr) :
+    Weather(scr),
+    fg_(scr.rows(), scr.columns())
 {
-    for (auto s : flakes) {
-        s.reset(scr);
+    intensity_ = scr.columns() / 10;
+    flakes_.resize(MaxIntensity);
+    for (int i = 0; i < intensity_; i++) {
+        flakes_[i].reset(scr.columns());
     }
 }
 
@@ -34,16 +38,24 @@ Snow::~Snow()
 
 void Snow::update()
 {
-    Frame fg(scr_.rows(), scr_.columns());
+    fg_.clear();
 
-    for (auto s : flakes) {
-        s.fall(fg);
+    for (int i = 0; i < intensity_; i++) {
+        flakes_[i].fall(fg_);
     }
 
-    scr_.copy(fg);
+    scr_.copy(fg_);
 }
 
 // ------------------------------------------------------------------
+
+Snowflake::Snowflake()
+{
+}
+
+Snowflake::~Snowflake()
+{
+}
 
 void Snowflake::fall(Frame& fr)
 {
@@ -57,30 +69,20 @@ void Snowflake::fall(Frame& fr)
         row_ += speed_;
         phase_ += freq_;
     } else {
-        reset(fr);
+        reset(fr.columns());
     }
 }
 
-void Snowflake::reset(Frame& fr)
+void Snowflake::reset(const int columns)
 {
     shape_ = SnowShape[rand() % array_size(SnowShape)];
-    column_ = randf(fr.columns());
+    column_ = randf(columns);
     row_ = 0.0f;
     falling_ = true;
     speed_ = 0.3f + randf(1.2f);
     phase_ = randf(2.0f * M_PI);
     freq_ = randf(0.2f);
     wobble_ = 0.5f + randf(3.5f);
-}
-
-int Snowflake::column()
-{
-    return (int)floorf(column_ + wobble_ * sinf(phase_));
-}
-
-int Snowflake::row()
-{
-    return (int)floorf(row_);
 }
 
 bool Snowflake::blocked(Frame& fr)

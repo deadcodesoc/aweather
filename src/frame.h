@@ -18,6 +18,7 @@ public:
         columns_(columns),
         buffer_(rows * columns)
     {
+        clear();
     }
     ~Frame() {
     }
